@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #image {
+      background-color: #e0e0e0;
+      height: 300px;
+      width: 500px;
+      text-align: center;
+      line-height: 300px;
+      font-size: 20px;
+      color: #333;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .preview {
+      height: 100px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Image Preview on Hover</h2>
+
+  <div id="image">Hover over an image below to display here.</div>
+
+  <img class="preview" 
+       onmouseover="upDate(this)" 
+       onmouseout="undo()" 
+       src="https://via.placeholder.com/500x300/ff7f7f" 
+       alt="Red placeholder" />
+
+  <img class="preview" 
+       onmouseover="upDate(this)" 
+       onmouseout="undo()" 
+       src="https://via.placeholder.com/500x300/7f7fff" 
+       alt="Blue placeholder" />
+
+  <img class="preview" 
+       onmouseover="upDate(this)" 
+       onmouseout="undo()" 
+       src="https://via.placeholder.com/500x300/7fff7f" 
+       alt="Green placeholder" />
+
+  <script>
+    function upDate(previewPic) {
+      // Log for debugging
+      console.log("Hovering over:", previewPic.alt);
+      
+      // Change background and text
+      let displayDiv = document.getElementById('image');
+      displayDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+      displayDiv.innerHTML = previewPic.alt;
+    }
+
+    function undo() {
+      let displayDiv = document.getElementById('image');
+      displayDiv.style.backgroundImage = "url('')";
+      displayDiv.innerHTML = "Hover over an image below to display here.";
+    }
+  </script>
+
+</body>
+</html>
